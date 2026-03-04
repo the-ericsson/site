@@ -1,8 +1,3 @@
-/* ─────────────────────────────────────────
-   Ericsson Ansah-Antwi — Personal Website
-   main.js
-───────────────────────────────────────── */
-
 gsap.registerPlugin(ScrollTrigger);
 
 /* ─── LOADER ─── */

@@ -113,7 +113,7 @@ nav {
 }
 .nav-logo {
   font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.83rem;
   font-weight: 300;
   letter-spacing: 0.1em;
   color: var(--black);
@@ -131,7 +131,7 @@ nav {
 }
 .nav-links a {
   font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.80rem;
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -183,7 +183,7 @@ nav {
 }
 .hero-eyebrow {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -226,7 +226,7 @@ nav {
 .hero-desc span { display: inline-block; }
 .hero-scroll-hint {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--dim);
@@ -249,7 +249,7 @@ nav {
 }
 .hero-bottom-left {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.1em;
   color: var(--dim);
   text-transform: uppercase;
@@ -260,7 +260,7 @@ nav {
 }
 .hero-bottom-right a {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--dim);
@@ -305,7 +305,7 @@ nav {
 }
 .section-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--dim);
@@ -376,7 +376,7 @@ nav {
 }
 .stat-d {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--dim);
@@ -389,7 +389,7 @@ nav {
 }
 .skill-chip {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.08em;
   padding: 0.4rem 0.9rem;
   border: 1px solid rgba(0,0,0,0.15);
@@ -425,7 +425,7 @@ nav {
 .edu-row:hover::before { width: 100%; }
 .edu-date {
   font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   letter-spacing: 0.1em;
   color: var(--dim);
   text-transform: uppercase;
@@ -440,27 +440,29 @@ nav {
 }
 .edu-degree {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: var(--dim);
   letter-spacing: 0.08em;
   margin-bottom: 1.8rem;
 }
 .edu-details {
   display: grid;
-  grid-template-columns: 130px 160px 1fr;
+  grid-template-columns: 130px 1fr;
   border: 1px solid rgba(0,0,0,0.1);
 }
 .edu-detail-block {
   padding: 1.2rem 1.4rem;
   border-right: 1px solid rgba(0,0,0,0.1);
+  height: 8rem;
+  overflow: hidden;
 }
 .edu-detail-block:last-child { border-right: none; }
 .edu-detail-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.68rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: #444;
   margin-bottom: 0.6rem;
 }
 .edu-detail-val {
@@ -470,18 +472,76 @@ nav {
   line-height: 1;
   color: var(--black);
 }
+.edu-stat-secondary {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  margin-top: 1rem;
+}
+/* ─ Coursework block ─ */
+.edu-coursework-block {
+  cursor: pointer;
+}
+.edu-coursework-block.expanded {
+  height: auto;
+  overflow: visible;
+  cursor: default;
+}
+.edu-courses-area {
+  position: relative;
+  overflow: hidden;
+  height: 4rem;
+}
+.edu-coursework-block.expanded .edu-courses-area {
+  overflow: visible;
+  height: auto;
+}
+.edu-expand-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240,235,227,0.92);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.73rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.edu-coursework-block:hover .edu-expand-hint { opacity: 1; }
+.edu-coursework-block.expanded .edu-expand-hint { display: none; }
 .edu-courses {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 0.4rem;
   padding-top: 0.1rem;
 }
+.edu-courses.scrolling {
+  animation: eduScroll var(--dur, 8s) ease-in-out infinite alternate;
+}
+.edu-coursework-block:hover .edu-courses.scrolling,
+.edu-coursework-block.expanded .edu-courses.scrolling {
+  animation-play-state: paused;
+}
+.edu-coursework-block.expanded .edu-courses {
+  animation: none !important;
+}
+@keyframes eduScroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(var(--scroll-dist, -30px)); }
+}
 .course-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.70rem;
   letter-spacing: 0.08em;
-  color: var(--dim);
-  border: 1px solid rgba(0,0,0,0.12);
+  color: #333;
+  border: 1px solid rgba(0,0,0,0.30);
   padding: 0.2rem 0.6rem;
   transition: border-color 0.3s, color 0.3s;
 }
@@ -511,7 +571,7 @@ nav {
 .exp-row:hover::before { width: 100%; }
 .exp-date {
   font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   letter-spacing: 0.1em;
   color: var(--dim);
   text-transform: uppercase;
@@ -527,7 +587,7 @@ nav {
 }
 .exp-org {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: var(--dim);
   letter-spacing: 0.08em;
   margin-bottom: 1rem;
@@ -552,7 +612,7 @@ nav {
   position: absolute;
   left: 0;
   color: var(--dim);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
 }
 .exp-arrow {
   font-size: 0.8rem;
@@ -598,7 +658,7 @@ nav {
 .project-award {
   display: inline-block;
   font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.70rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background: var(--accent);
@@ -621,7 +681,7 @@ nav {
 }
 .stack-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.70rem;
   letter-spacing: 0.08em;
   color: var(--dim);
   border: 1px solid rgba(0,0,0,0.12);
@@ -684,7 +744,7 @@ nav {
 }
 .lead-org {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.1em;
   color: rgba(255,255,255,0.35);
   text-transform: uppercase;
@@ -693,7 +753,7 @@ nav {
 .lead-date-tag {
   display: inline-block;
   font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.70rem;
   letter-spacing: 0.08em;
   color: var(--accent);
   border: 1px solid rgba(200,240,74,0.3);
@@ -770,7 +830,7 @@ nav {
 }
 .contact-link {
   font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.80rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--dim);
@@ -799,7 +859,7 @@ footer {
 }
 footer p {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.73rem;
   letter-spacing: 0.1em;
   color: var(--dim);
   text-transform: uppercase;

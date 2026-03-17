@@ -214,3 +214,35 @@ window.addEventListener('scroll', () => {
     nav.style.mixBlendMode   = 'multiply';
   }
 });
+
+/* ─── Coursework scroll + expand ─── */
+requestAnimationFrame(() => {
+  document.querySelectorAll('.edu-coursework-block').forEach(block => {
+    const area = block.querySelector('.edu-courses-area');
+    const courses = block.querySelector('.edu-courses');
+    const areaH = area.clientHeight;
+    const coursesH = courses.scrollHeight;
+    if (coursesH > areaH) {
+      const dist = coursesH - areaH;
+      const dur = Math.max(3, dist / 14);
+      courses.style.setProperty('--scroll-dist', `-${dist}px`);
+      courses.style.setProperty('--dur', `${dur}s`);
+      courses.classList.add('scrolling');
+    }
+    block.addEventListener('click', () => {
+      const expanding = !block.classList.contains('expanded');
+      block.classList.toggle('expanded');
+      if (!expanding) courses.style.transform = '';
+    });
+  });
+});
+
+/* ─── Clickable project titles ─── */
+document.querySelectorAll('.project-name[href]').forEach(el => {
+  el.style.position = 'relative';
+  const hint = document.createElement('span');
+  hint.className = 'click-hint';
+  hint.textContent = 'Click me to see it!';
+  el.appendChild(hint);
+  el.addEventListener('click', () => window.open(el.getAttribute('href'), '_blank'));
+});

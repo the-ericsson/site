@@ -890,3 +890,26 @@ footer p {
   footer { padding: 2rem 1.5rem; }
   #contact { padding: 6rem 1.5rem; }
 }
+
+/* ─── Clickable project titles ─── */
+.project-name[href] { cursor: pointer; position: relative; }
+.click-hint {
+  position: absolute;
+  top: -1.6rem;
+  left: 0;
+  background: var(--accent, #e5c07b);
+  color: #111;
+  font-size: 0.73rem;
+  font-family: 'DM Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.project-name[href]:hover .click-hint {
+  opacity: 0.92;
+  transform: translateY(0px);
+}

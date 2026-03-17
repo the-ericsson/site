@@ -192,7 +192,7 @@
       </div>
 
       <div class="edu-row">
-        <div class="edu-date">2022 - 2025</div>
+        <div class="edu-date">Sep 2022 - May 2025</div>
         <div class="edu-body">
           <div class="edu-school">Utah Valley University (UVU)</div>
           <div class="edu-degree">Concurrent Enrollment · A.S. University Studies · Orem, UT</div>
@@ -225,7 +225,7 @@
       </div>
 
       <div class="edu-row">
-        <div class="edu-date">2022 - 2025</div>
+        <div class="edu-date">Aug 2022 - May 2025</div>
         <div class="edu-body">
           <div class="edu-school">Westlake High School</div>
           <div class="edu-degree">High School Diploma · Saratoga Springs, UT</div>
@@ -248,7 +248,6 @@
                   <span class="course-tag">Exploring Business and Marketing</span>
                   <span class="course-tag">Web Development 1</span>
                   <span class="course-tag">Engineering Technology</span>
-                  <span class="course-tag">Robotics 2</span>
                   <span class="course-tag">Student Council</span>
                   <span class="course-tag">AP Spanish Language and Culture</span>
                 </div>
@@ -557,63 +556,6 @@
 
   <!-- Site JS -->
   <script src="main.js"></script>
-
-  <!-- Clickable project titles -->
-  <style>
-    .project-name[href] { cursor: pointer; position: relative; }
-    .click-hint {
-      position: absolute;
-      top: -1.6rem;
-      left: 0;
-      background: var(--accent, #e5c07b);
-      color: #111;
-      font-size: 0.73rem;
-      font-family: 'DM Mono', monospace;
-      padding: 2px 8px;
-      border-radius: 20px;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .project-name[href]:hover .click-hint {
-      opacity: 0.92;
-      transform: translateY(0px);
-    }
-  </style>
-  <script>
-    // Coursework scroll + expand
-    requestAnimationFrame(() => {
-      document.querySelectorAll('.edu-coursework-block').forEach(block => {
-        const area = block.querySelector('.edu-courses-area');
-        const courses = block.querySelector('.edu-courses');
-        const areaH = area.clientHeight;
-        const coursesH = courses.scrollHeight;
-        if (coursesH > areaH) {
-          const dist = coursesH - areaH;
-          const dur = Math.max(3, dist / 14);
-          courses.style.setProperty('--scroll-dist', `-${dist}px`);
-          courses.style.setProperty('--dur', `${dur}s`);
-          courses.classList.add('scrolling');
-        }
-        block.addEventListener('click', () => {
-          const expanding = !block.classList.contains('expanded');
-          block.classList.toggle('expanded');
-          if (!expanding) courses.style.transform = '';
-        });
-      });
-    });
-
-    document.querySelectorAll('.project-name[href]').forEach(el => {
-      el.style.position = 'relative';
-      const hint = document.createElement('span');
-      hint.className = 'click-hint';
-      hint.textContent = 'Click me to see it!';
-      el.appendChild(hint);
-      el.addEventListener('click', () => window.open(el.getAttribute('href'), '_blank'));
-    });
-  </script>
 
 </body>
 </html>
